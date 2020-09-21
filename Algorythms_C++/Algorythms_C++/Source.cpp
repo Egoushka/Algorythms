@@ -12,13 +12,33 @@ int main() {
 
     int** arr;
     arr = new int* [5];
+    int choice;
     for (int i = 0; i < 5; i++) {
         arr[i] = new int[5];
 
     }
     for (int i = 0; i < 5; i++) {
         for (int j = 0; j < 5; j++) {
-            arr[i][j] = 5- i;
+            //arr[i][j] = 5 - i;
+            arr[i][j] = rand() % 5;
+        }
+    }
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+            std::cout << arr[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+    {
+        std::cin >> choice;
+        int* tmp = new int[5];
+        for (int i = 0; i < 5; i++) {      
+            tmp[i] = arr[i][choice];
+            arr[i][choice] = arr[i][0];
+        }
+        for (int i = 0; i < 5; i++) {      
+            arr[i][0] = tmp[i];
+            ;
         }
     }
     for (int i = 0; i < 5; i++) {
@@ -28,7 +48,18 @@ int main() {
         std::cout << std::endl;
     }
     std::cout << std::endl;
-    MultArrSorting::quickSort(arr,0,4);
+    MultArrSorting::insertSort(arr, 5);
+    //MultArrSorting::quickSort(arr,0,4);
+    {
+        int* tmp = new int[5];
+        for (int i = 0; i < 5; i++) {
+            tmp[i] = arr[i][0] ;
+            arr[i][0] = arr[i][choice];
+        }
+        for (int i = 0; i < 5; i++) {
+            arr[i][choice] = tmp[i];;
+        }
+    }
     for (int i = 0; i < 5; i++) {
         for (int j = 0; j < 5; j++) {
             std::cout << arr[i][j] << " ";
