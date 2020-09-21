@@ -23,3 +23,12 @@ void ArrayController::shiftElementsForInsertSort(int* arr, int from, int to, int
         arr[i] = tmp;
     }
 }
+void ArrayController::shiftElementsForInsertSort(int* arr[], int from, int to, int n)
+{
+    int* tmp;
+    for (int i = from; i > to; --i) {
+        tmp = arr[i - 1];
+        arr[i - 1] = arr[i];
+        arr[i] = tmp;
+    }
+}

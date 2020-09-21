@@ -2,6 +2,7 @@
 #include <time.h>
 #include "Sorting.h"
 #include "ArrayController.h"
+#include "MultArrSorting.h"
 #include <ctime>
 #include <chrono>
 #include <fstream>
@@ -9,7 +10,34 @@ typedef std::chrono::high_resolution_clock Clock;
 int main() {
     //srand(time(NULL));
 
-    int n = 100000;
+    int** arr;
+    arr = new int* [5];
+    for (int i = 0; i < 5; i++) {
+        arr[i] = new int[5];
+
+    }
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+            arr[i][j] = 5- i;
+        }
+    }
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+            std::cout << arr[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+    std::cout << std::endl;
+    MultArrSorting::quickSort(arr,0,4);
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < 5; j++) {
+            std::cout << arr[i][j] << " ";
+        }
+        std::cout << std::endl;
+    }
+
+
+  /*  int n = 100000;
     int* arr = new int[n];
     int from = -1000, to = 1000;
     auto t1 = Clock::now(),t2 = Clock::now();
@@ -30,7 +58,7 @@ int main() {
         }
         fout.close();
         
-        
+        */
 
          /*{
              ArrayController::setElementsValue(arr, from, to, n);
@@ -74,7 +102,6 @@ int main() {
 
          }*/
 
-         
-    }
     system("pause");
-}
+
+    }
