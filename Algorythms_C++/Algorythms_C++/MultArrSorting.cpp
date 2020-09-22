@@ -30,6 +30,8 @@ void MultArrSorting::insertSort(int* arr[], int n) {
             }
             ++j;
         }
+        if(j == 1)
+        
         ArrayController::shiftElementsForInsertSort(arr, i, j, n);
     }
 }
@@ -40,7 +42,7 @@ void MultArrSorting::selectionSort(int* arr[], int n) {
         k = i;
         for (int j = i + 1; j < n; ++j)
         {
-            if (arr[k] > arr[j])
+            if (*arr[k] > *arr[j])
                 k = j;
         }
         if (k != i) {
@@ -78,12 +80,28 @@ void MultArrSorting::quickSort(int* arr[], int first, int last)
     if (first < l) quickSort(arr, first, l);
     if (f < last)quickSort(arr, f, last);
 }
+void MultArrSorting::radixSort(int* arr[], int minElem, int dip, int rows) {
+    int** tmp = new int*[dip];
+    for (int i = 0; i < dip; i++) {
+        *tmp[i] = 0;
+    }
+    for (int i = 0; i < rows; i++) {
+        *tmp[*arr[i] - minElem]++;
+    }
+    for (int i = 0, j = -1000; i < rows; j++) {
+        while (*tmp[j - minElem] > 0) {
+            *arr[i] = j;
+            ++i;
+            --tmp[j - minElem];
+        }
 
+    }
+}
 void MultArrSorting::merge(int* arr[], int start, int middle, int end) {
     int** tmp = new int*[end - start + 1];
     int i = start, j = middle + 1, k = 0;
     while (i <= middle && j <= end) {
-        if (arr[i] <= arr[j])
+        if (*arr[i] <= *arr[j])
         {
             tmp[k] = arr[i];
             k++;

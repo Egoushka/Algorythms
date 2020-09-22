@@ -140,12 +140,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ArrayController.cpp" />
+    <ClCompile Include="Controller.cpp" />
     <ClCompile Include="MultArrSorting.cpp" />
     <ClCompile Include="Sorting.cpp" />
     <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ArrayController.h" />
+    <ClInclude Include="Controller.h" />
     <ClInclude Include="MultArrSorting.h" />
     <ClInclude Include="Sorting.h" />
   </ItemGroup>

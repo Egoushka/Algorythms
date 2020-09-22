@@ -5,17 +5,20 @@
 
 
 void Sorting::bubleSort(int* arr, unsigned int n) {
-    //bool checker = false;
-    for (unsigned int i = n-1, j = 0, tmp; i > 0 /*&& !checker*/; --i) {
-        //checker = true;
+    bool checker = false;
+    for (unsigned int i = n-1, j = 0, tmp; i > 0 && !checker; --i) {
+        checker = true;
         while (j < i) {
             if (arr[j] > arr[j + 1]) {
-                //checker = false;
+                checker = false;
                 tmp = arr[j];
                 arr[j] = arr[j + 1];
                 arr[j + 1] = tmp;
+                //ArrayController::showElems(arr, n);
+
             }
             ++j;
+
         }
         j = 0;
     }
@@ -47,7 +50,24 @@ void Sorting::selectionSort(int* arr, int n) {
         }
     }
 }
+void Sorting::radixSort(int* arr,int minElem, int dip, int n) {
+    int* tmp = new int[dip];
+    for (int i = 0; i < dip; i++) {
+        tmp[i] = 0;
+    }
+    for (int i = 0; i < n; i++) {
+        tmp[arr[i] - minElem]++;
+    }
+    for (int i = 0,j = -1000; i < n; j++) {
+        
+        while (tmp[j-minElem] > 0) {
+            arr[i] = j;
+            ++i;
+            --tmp[j - minElem];      
+        }
 
+    }
+}
 void Sorting::mergeSort(int* arr, int start, int end) {
     if (start < end) {
         int mid = (start + end) / 2;
